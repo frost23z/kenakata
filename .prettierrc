@@ -1,0 +1,27 @@
+{
+    "$schema": "https://json.schemastore.org/prettierrc",
+    "trailingComma": "es5",
+    "tabWidth": 4,
+    "semi": false,
+    "singleQuote": true,
+    "singleAttributePerLine": false,
+    "htmlWhitespaceSensitivity": "css",
+    "printWidth": 100,
+    "jsxSingleQuote": true,
+    "plugins": [
+        "prettier-plugin-organize-imports",
+        "@prettier/plugin-xml",
+        "prettier-plugin-tailwindcss"
+    ],
+    "tailwindFunctions": ["cn", "cva"],
+    "overrides": [
+        { "files": ["*.yml", "*.yaml"], "options": { "tabWidth": 2 } },
+        {
+            "files": "*.svg",
+            "options": {
+                "parser": "xml",
+                "xmlWhitespaceSensitivity": "ignore"
+            }
+        }
+    ]
+}
