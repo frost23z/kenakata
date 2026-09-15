@@ -26,6 +26,16 @@ export async function getProductBySlug(slug: string): Promise<Product> {
     return request<Product>(`/products/slug/${slug}`)
 }
 
+export async function getProductBySlugOrId(param: string): Promise<Product> {
+    try {
+        return await getProductBySlug(param)
+    } catch {
+        const id = Number(param)
+        if (!Number.isFinite(id)) throw new Error(`Not a valid product slug or id: ${param}`)
+        return await getProductById(id)
+    }
+}
+
 export async function getProductsRelatedById(id: number): Promise<Product[]> {
     return request<Product[]>(`/products/${id}/related`)
 }
