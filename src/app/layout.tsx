@@ -1,5 +1,6 @@
 import Footer from '@/components/footer/Footer'
 import Header from '@/components/header/Header'
+import ThemeProvider from '@/components/theme/ThemeProvider'
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
@@ -24,11 +25,14 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
         <html
             className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
             lang='en'
+            suppressHydrationWarning
         >
             <body className='flex min-h-full w-full flex-col'>
-                <Header />
-                {children}
-                <Footer />
+                <ThemeProvider>
+                    <Header />
+                    {children}
+                    <Footer />
+                </ThemeProvider>
             </body>
         </html>
     )

@@ -1,4 +1,5 @@
 import Logo from '@/components/logo/Logo'
+import ThemeToggle from '@/components/theme/ThemeToggle'
 import UContainer from '@/components/utilities/UContainer'
 import UHeader from '@/components/utilities/UHeader'
 import { User } from 'lucide-react'
@@ -12,7 +13,8 @@ export default async function Header() {
                     <Logo className='text-foreground w-40 lg:w-50' />
                 </Link>
 
-                <div className='ms-auto flex items-center gap-1 lg:ms-0'>
+                <div className='ms-auto flex items-center gap-2 lg:ms-0 lg:gap-4'>
+                    <ThemeToggle />
                     <Link
                         className='hover:bg-accent hover:text-accent-foreground flex h-10 items-center gap-2 rounded-md px-2 transition-colors'
                         href='/account'
