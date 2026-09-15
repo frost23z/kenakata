@@ -4,6 +4,8 @@ export const CONTAINER_CLASS = 'container mx-auto px-4'
 
 export const SITE_NAME = 'Kenakata'
 
+export const PLACEHOLDER_IMAGE = '/placeholder.svg'
+
 export const GUARANTEES = [
     { Icon: Truck, title: 'Nationwide delivery', body: '1-2 days in Dhaka, 2-4 days outside' },
     { Icon: RotateCcw, title: '7-day returns', body: 'Unused items, original packaging' },
