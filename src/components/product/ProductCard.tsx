@@ -2,6 +2,7 @@ import Button from '@/components/ui/Button'
 import { PLACEHOLDER_IMAGE } from '@/components/utilities/constants'
 import UImage from '@/components/utilities/UImage'
 import { formatPrice } from '@/lib/format'
+import { productHref } from '@/lib/product'
 import Link from 'next/link'
 
 export default function ProductCard({
@@ -12,11 +13,12 @@ export default function ProductCard({
     priority?: boolean
 }) {
     const image = product.images?.[0] ?? PLACEHOLDER_IMAGE
+    const href = productHref(product)
 
     return (
         <article className='group border-border bg-card text-card-foreground relative flex flex-col overflow-hidden rounded-xl border transition-shadow hover:shadow-md'>
             <div className='bg-muted relative aspect-square overflow-hidden'>
-                <Link href='#' tabIndex={-1} aria-hidden>
+                <Link href={href} tabIndex={-1} aria-hidden>
                     <UImage
                         className='object-cover transition-transform duration-300 group-hover:scale-105'
                         src={image}
@@ -32,7 +34,7 @@ export default function ProductCard({
                 )}
 
                 <h3 className='text-sm leading-snug font-medium'>
-                    <Link className='hover:text-primary after:absolute after:inset-0' href='#'>
+                    <Link className='hover:text-primary after:absolute after:inset-0' href={href}>
                         {product.title}
                     </Link>
                 </h3>
