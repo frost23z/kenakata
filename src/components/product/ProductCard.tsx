@@ -1,8 +1,8 @@
-import Button from '@/components/ui/Button'
-import { PLACEHOLDER_IMAGE } from '@/components/utilities/constants'
+import AddToCart from '@/components/product/AddToCart'
+import WishlistButton from '@/components/product/WishlistButton'
 import UImage from '@/components/utilities/UImage'
 import { formatPrice } from '@/lib/format'
-import { productHref } from '@/lib/product'
+import { productHref, toCartItem } from '@/lib/product'
 import Link from 'next/link'
 
 export default function ProductCard({
@@ -14,6 +14,7 @@ export default function ProductCard({
 }) {
     const image = product.images?.[0] ?? PLACEHOLDER_IMAGE
     const href = productHref(product)
+    const item = toCartItem(product)
 
     return (
         <article className='group border-border bg-card text-card-foreground relative flex flex-col overflow-hidden rounded-xl border transition-shadow hover:shadow-md'>
@@ -26,6 +27,7 @@ export default function ProductCard({
                         priority={priority}
                     />
                 </Link>
+                <WishlistButton className='absolute inset-e-2 top-2 z-10' item={item} />
             </div>
 
             <div className='flex grow flex-col gap-2 p-4'>
@@ -41,9 +43,7 @@ export default function ProductCard({
 
                 <p className='mt-auto text-base font-semibold'>{formatPrice(product.price)}</p>
 
-                <Button className='relative w-full' variant='primary' size='sm'>
-                    Add to Cart
-                </Button>
+                <AddToCart className='relative w-full' item={item} size='sm' />
             </div>
         </article>
     )

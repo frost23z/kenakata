@@ -66,3 +66,7 @@ export const SOCIAL_LINKS = [
     { label: 'Instagram', href: 'https://instagram.com' },
     { label: 'YouTube', href: 'https://youtube.com' },
 ] as const
+
+export const DELIVERY_FEE = 60
+
+export const FREE_DELIVERY_THRESHOLD = 2000

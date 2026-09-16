@@ -1,11 +1,12 @@
+import BuyBox from '@/components/product/BuyBox'
 import ProductGallery from '@/components/product/ProductGallery'
 import ProductGrid from '@/components/product/ProductGrid'
 import Breadcrumbs from '@/components/ui/Breadcrumbs'
-import Button from '@/components/ui/Button'
 import UMain from '@/components/utilities/UMain'
 import USection from '@/components/utilities/USection'
 import { getProductBySlugOrId, getProducts, getProductsRelatedById } from '@/lib/api/products'
 import { formatPrice } from '@/lib/format'
+import { toCartItem } from '@/lib/product'
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
@@ -49,6 +50,7 @@ export default async function ProductPage({ params }: PageProps<'/product/[slug]
 
     const related = await getProductsRelatedById(product.id).catch(() => [])
     const images = product.images
+    const item = toCartItem(product)
 
     return (
         <UMain className='flex flex-col justify-center py-4 lg:py-6'>
@@ -90,9 +92,7 @@ export default async function ProductPage({ params }: PageProps<'/product/[slug]
                         {product.description}
                     </p>
 
-                    <Button className='grow sm:grow-0' type='button' size='lg'>
-                        Add to cart
-                    </Button>
+                    <BuyBox item={item} />
 
                     <dl className='border-border divide-border divide-y rounded-xl border text-sm'>
                         <div className='flex justify-between p-4'>
