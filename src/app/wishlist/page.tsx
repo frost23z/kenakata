@@ -16,7 +16,7 @@ export const metadata: Metadata = {
  */
 export default function WishlistPage() {
     return (
-        <UMain className='pb-16'>
+        <UMain className='flex flex-col justify-center py-4 lg:py-6'>
             <Breadcrumbs items={[{ label: 'Wishlist' }]} />
 
             <h1 className='mb-6 text-2xl font-semibold tracking-tight sm:text-3xl'>
