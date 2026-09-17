@@ -1,5 +1,6 @@
 import AddToCart from '@/components/product/AddToCart'
 import WishlistButton from '@/components/product/WishlistButton'
+import { PLACEHOLDER_IMAGE } from '@/components/utilities/constants'
 import UImage from '@/components/utilities/UImage'
 import { formatPrice } from '@/lib/format'
 import { productHref, toCartItem } from '@/lib/product'
