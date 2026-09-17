@@ -22,7 +22,7 @@ export default async function AccountLayout({ children }: LayoutProps<'/account'
     if (!user) redirect('/login?next=/account')
 
     return (
-        <UMain className='pb-16'>
+        <UMain className='flex flex-col justify-center py-4 lg:py-6'>
             <Breadcrumbs items={[{ label: 'Account' }]} />
 
             <h1 className='text-2xl font-semibold tracking-tight sm:text-3xl'>
