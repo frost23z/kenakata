@@ -3,11 +3,11 @@
 import QuantityStepper from '@/components/product/QuantityStepper'
 import Button from '@/components/ui/Button'
 import StatusPanel from '@/components/ui/StatusPanel'
+import UImage from '@/components/utilities/UImage'
 import { useCart } from '@/hooks/useCart'
 import { formatPrice } from '@/lib/format'
 import { Trash2 } from 'lucide-react'
 import Link from 'next/link'
-import UImage from '../utilities/UImage'
 
 export default function CartLines() {
     const { items, setQuantity, remove, clear, ready } = useCart()

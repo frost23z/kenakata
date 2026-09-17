@@ -1,18 +1,27 @@
 import CartButton from '@/components/header/CartButton'
+import SearchBar from '@/components/header/SearchBar'
 import Logo from '@/components/logo/Logo'
 import ThemeToggle from '@/components/theme/ThemeToggle'
 import UContainer from '@/components/utilities/UContainer'
 import UHeader from '@/components/utilities/UHeader'
 import { Heart, User } from 'lucide-react'
 import Link from 'next/link'
+import { Suspense } from 'react'
 
 export default async function Header() {
     return (
-        <UHeader className='flex items-center'>
-            <UContainer className='flex items-center justify-between gap-2 lg:gap-4'>
+        <UHeader>
+            <UContainer className='flex min-h-16 items-center gap-2 lg:min-h-20 lg:gap-4'>
                 <Link className='flex shrink-0' href='/' aria-label='Kenakata Home'>
                     <Logo className='text-foreground w-40 lg:w-50' />
                 </Link>
+
+                {/* SearchBar reads useSearchParams. Without a Suspense boundary
+                    every route that renders this layout opts out of static
+                    rendering and `pnpm build` fails. */}
+                <Suspense fallback={<div className='hidden h-10 grow lg:block' />}>
+                    <SearchBar className='hidden grow lg:block' />
+                </Suspense>
 
                 <div className='ms-auto flex items-center gap-2 lg:ms-0 lg:gap-4'>
                     <ThemeToggle />
@@ -32,6 +41,12 @@ export default async function Header() {
                     </Link>
                     <CartButton />
                 </div>
+            </UContainer>
+
+            <UContainer className='pb-3 lg:pb-0'>
+                <Suspense fallback={<div className='h-10 lg:hidden' />}>
+                    <SearchBar className='lg:hidden' />
+                </Suspense>
             </UContainer>
         </UHeader>
     )
